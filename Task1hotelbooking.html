@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:lightgrey;
+            text-align: center;
+        }
+        #bookingForm{
+            text-align: left;
+        }
+        #f1{
+            width: fit-content;
+            margin-left: 450px;
+            margin-top: 100px;
+            margin-bottom: 100px;
+        }
+    </style>
+</head>
+<body>
+    <fieldset id="f1">
+    <h1>Hotel Booking Registration Form</h1>
+    <form id="bookingForm">
+        <label for="customerName">Customer Name:</label>
+        <input type="text" id="customerName" required><br><br>
+        
+        <label for="checkInDate">Check-in Date:</label>
+        <input type="date" id="checkInDate" required><br><br>
+        
+        <label for="totalDays">Total No of Days:</label>
+        <input type="number" id="totalDays" required><br><br>
+        
+        <label for="totalPersons">Total No of Persons:</label>
+        <input type="number" id="totalPersons" required><br><br>
+        
+        <label for="roomType">Room Type:</label>
+        <select id="roomType">
+            <option value="Delux Room">Delux Room</option>
+            <option value="Suite Room">Suite Room</option>
+        </select><br><br>
+        
+        <label for="advanceAmount">Advance Amount:</label>
+        <input type="number" id="advanceAmount"><br><br>
+        
+        <label for="amenities">Amenities:</label>
+        <select id="amenities" >
+            <option value="AC">AC</option>
+            <option value="Locker">Locker</option>
+        </select><br><br>
+        
+        <!-- <label for="balance">Balance:</label>
+        <input type="text" id="balance" disabled><br><br> -->
+        
+        <center><input type="button" value="Calculate Total Cost" onclick="calculateTotalCost()"></center>
+    </form>
+    <form>
+    </fieldset>
+        <h1>Total balance amount to pay</h1>
+        <label for="balance">Balance:</label>
+        <input type="text" id="balance" disabled><br><br>
+    </form>
+    <script>
+        function calculateTotalCost() {
+            const roomRate = document.getElementById("roomType").value === "Delux Room" ? 2500 : 4000;
+            const totalDays = parseInt(document.getElementById("totalDays").value);
+            const totalPersons = parseInt(document.getElementById("totalPersons").value);
+            const advanceAmount = parseInt(document.getElementById("advanceAmount").value);
+            const amenitiesCost = document.getElementById("amenities").selectedOptions.length * 1000;
+
+            const roomCost = roomRate * totalDays;
+
+            const additionalCost = (totalPersons > 2) ? (totalPersons - 2) * 1000 * totalDays : 0;
+
+            const totalCost = roomCost + amenitiesCost + additionalCost;
+
+            const balance = totalCost - advanceAmount;
+
+            document.getElementById("balance").value = balance;
+        }
+    </script>
+</body>
+</html>
