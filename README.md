@@ -21,7 +21,8 @@ This is a web-based hotel booking registration form built using **HTML**, **CSS*
 
 ## 📸 Screenshot
 
-![Hotel Booking Form UI](./0a103223-1fde-41a7-bd0e-6bd276787c45.png)
+![image](https://github.com/user-attachments/assets/79d42756-f8e4-4df4-b3a1-3b8ab71f9cf4)
+
 
 ---
 
